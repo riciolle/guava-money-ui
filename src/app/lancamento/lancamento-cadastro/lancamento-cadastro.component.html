@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="ui-g">
+    <form autocomplete="off">
+
+      <div class="ui-g-12">
+        <h1>Novo Lançamento</h1>
+      </div>
+
+      <div class="ui-g-12">
+        <p-selectButton [options]="tipos" #tipo></p-selectButton>
+      </div>
+
+      <div class="ui-g-6 ui-md-4 ui-fluid">
+        <label>Vencimento</label>
+        <p-calendar dateFormat="dd/mm/yy" [showIcon]="true"></p-calendar>
+      </div>
+
+      <div class="ui-g-6 ui-md-4 ui-fluid">
+        <label>{{tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento'}}</label>
+        <p-calendar dateFormat="dd/mm/yy" [showIcon]="true"></p-calendar>
+      </div>
+
+      <div class="ui-g-12 ui-md-9 ui-fluid">
+        <label>Descrição</label>
+        <input pInputText #descricao="ngModel" ngModel type="text" name="descricao" required minlength="5">
+        <app-message [control]="descricao" error="required" text="Informe uma descrição"></app-message>
+        <app-message [control]="descricao" error="minlength" text="Mínimo de {{descricao.errors?.minlength?.requiredLength }} caracteres "></app-message>
+      </div>
+
+      <div class="ui-g-12 ui-md-3 ui-fluid">
+        <label>Valor</label>
+        <input pInputText type="text" ngModel name="valor" currencyMask [options]="{prefix:'',thousands:'.',decimal:',', allowNegative:false}">
+      </div>
+
+      <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label>Categoria</label>
+        <p-dropdown [options]="categorias" [autoWidth]=false placeholder="Selecione uma Categoria"></p-dropdown>
+      </div>
+
+      <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label>Pessoa</label>
+        <p-dropdown [options]="pessoas" [autoWidth]=false placeholder="Selecione uma Pessoa"></p-dropdown>
+      </div>
+
+      <div class="ui-g-12 ui-fluid">
+        <label>Observação</label>
+        <p-editor [style]="{'height':'150px'}"></p-editor>
+      </div>
+
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Salvar" style="margin: 0px 5px 0px 0px;"></button>
+        <button pButton class="ui-button-info" type="submit" label="Novo"></button>
+      </div>
+    </form>
+  </div>
+</div>

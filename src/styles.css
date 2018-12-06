@@ -1,9 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+
 body{
   font-family: Arial, Helvetica, sans-serif;
   color: #404c51;
   margin: 0;
 }
+
 label{
   font-weight: bold;
 }
@@ -14,6 +16,7 @@ label{
     margin: 0 auto;
   }
 }
+
 .col-valor{
   width: 120px;
   text-align: right;
@@ -22,4 +25,17 @@ label{
 .col-data{
   width: 120px;
   text-align: center;
+}
+
+.col-acoes{
+  width: 120px;
+  text-align: center;
+}
+
+.despesa {
+  color: #ff0000 !important;
+}
+
+.receita {
+  color: #0000ff!important;
 }
