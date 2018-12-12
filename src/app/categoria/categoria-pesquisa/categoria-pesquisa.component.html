@@ -1,3 +1,18 @@
-<p>
-  categoria-pesquisa works!
-</p>
+<div class="container">
+  <div class="ui-g">
+    {{categorias | json}}
+    <form autocomplete="off" (ngSubmit)="listarTodos()">
+      <div class="ui-g-12">
+        <h1>Categorias</h1>
+      </div>
+
+      <div class="ui-g-12 ui-fluid">
+        <label>Descrição</label>
+        <input pInputText name="descricao" type="text">
+      </div>
+      <div class="ui-g-12">
+        <p-button label="Pesquisar" type="submit"></p-button>
+      </div>
+    </form>
+  </div>
+</div>

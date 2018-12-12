@@ -40,6 +40,9 @@ import { CategoriaPesquisaComponent } from './categoria-pesquisa/categoria-pesqu
     CurrencyMaskModule,
     InputMaskModule
   ],
-  exports: [CategoriaPesquisaComponent]
+  exports:
+    [
+      CategoriaPesquisaComponent
+    ]
 })
 export class CategoriaModule { }

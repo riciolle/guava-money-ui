@@ -1,4 +1,8 @@
+import { MessageService, ConfirmationService } from 'primeng/api';
 import { Component, OnInit } from '@angular/core';
+
+import { CategoriaService } from './../categoria.service';
+import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 
 @Component({
   selector: 'app-categoria-pesquisa',
@@ -7,9 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriaPesquisaComponent implements OnInit {
 
-  constructor() { }
+  categorias = [];
 
-  ngOnInit() {
+  constructor(
+    private categoriaService: CategoriaService,
+    private messageService: MessageService,
+    private confirmationService: ConfirmationService,
+    private errorHandler: ErrorHandlerService) { }
+
+  ngOnInit() { }
+
+  listarTodos() {
+    console.log('Passou aqui 1');
+    this.categoriaService.listarTodos()
+      .then(resultado => {
+        this.categorias = resultado;
+      })
+      .catch(errorHandler => this.errorHandler.handle(errorHandler));
   }
 
 }
