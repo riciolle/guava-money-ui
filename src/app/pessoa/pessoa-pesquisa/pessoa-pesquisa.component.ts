@@ -1,19 +1,73 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+
+import { ConfirmationService } from 'primeng/api';
+import { LazyLoadEvent, MessageService } from 'primeng/components/common/api';
+
+import { PessoaFiltro, PessoaService } from './../pessoa.service';
+import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 
 @Component({
   selector: 'app-pessoa-pesquisa',
   templateUrl: './pessoa-pesquisa.component.html',
   styleUrls: ['./pessoa-pesquisa.component.css']
 })
-export class PessoaPesquisaComponent {
+export class PessoaPesquisaComponent implements OnInit {
 
-  pessoas = [
-    { nome: 'Manoel Pinheiro', cidade: 'Uberlândia', estado: 'MG', ativo: true },
-    { nome: 'Sebastião da Silva', cidade: 'São Paulo', estado: 'SP', ativo: false },
-    { nome: 'Carla Souza', cidade: 'Florianópolis', estado: 'SC', ativo: true },
-    { nome: 'Luís Pereira', cidade: 'Curitiba', estado: 'PR', ativo: true },
-    { nome: 'Vilmar Andrade', cidade: 'Rio de Janeiro', estado: 'RJ', ativo: false },
-    { nome: 'Paula Maria', cidade: 'Uberlândia', estado: 'MG', ativo: true }
-  ];
+  @ViewChild('tabela') grid;
+  totalRegistros = 0;
+  filtro = new PessoaFiltro();
+  pessoas = [];
 
+  constructor(
+    private pessoaService: PessoaService,
+    private messageService: MessageService,
+    private confirmationService: ConfirmationService,
+    private errorHandler: ErrorHandlerService
+  ) { }
+
+  ngOnInit() { }
+
+  consultar(pagina = 0) {
+    this.filtro.pagina = pagina;
+    this.pessoaService.consultar(this.filtro)
+      .then(resultado => {
+        this.pessoas = resultado.pessoas;
+        this.totalRegistros = resultado.total;
+      });
+  }
+
+  proximaPagina(event: LazyLoadEvent) {
+    this.consultar(event.first / event.rows);
+  }
+
+  confirmarExclusao(pessoa: any) {
+    this.confirmationService.confirm({
+      message: 'Deseja excluir o pessoa?',
+      accept: () => {
+        this.excluir(pessoa);
+      }
+    });
+  }
+
+  excluir(pessoa: any) {
+    this.pessoaService.excluir(pessoa.codigo)
+      .then(() => {
+        this.consultar();
+        this.messageService.add({ severity: 'success', summary: 'Serviço de Mensagem', detail: 'Pessoa excluida com sucesso' });
+      })
+      .catch(errorHandler => this.errorHandler.handle(errorHandler));
+  }
+
+  updateStatus(pessoa: any): void {
+
+    const novoStatus = !pessoa.ativo;
+    this.pessoaService.updateStatus(pessoa.codigo, novoStatus)
+      .then(() => {
+        const acao = novoStatus ? 'ativada' : 'desativada';
+        pessoa.ativo = novoStatus;
+        this.messageService.add({ severity: 'success', summary: 'Serviço de Mensagem', detail: `Pessoa ${acao} com sucesso!` });
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+
+  }
 }

@@ -1,12 +1,8 @@
 import { Http, Headers, URLSearchParams } from '@angular/http';
 import { Injectable } from '@angular/core';
 
-import * as moment from 'moment';
-
-export class LancamentoFiltro {
-  descricao: string;
-  dataVencimentoInicio: Date;
-  dataVencimentoFim: Date;
+export class PessoaFiltro {
+  nome: string;
   pagina = 0;
   itensPorPagina = 5;
 }
@@ -14,9 +10,9 @@ export class LancamentoFiltro {
 @Injectable({
   providedIn: 'root'
 })
-export class LancamentoService {
+export class PessoaService {
 
-  lancamentoURL = 'http://localhost:8080/lancamentos';
+  pessoaURL = 'http://localhost:8080/pessoa';
 
   constructor(private http: Http) { }
 
@@ -30,30 +26,20 @@ export class LancamentoService {
     params.set('page', filtro.pagina.toString());
     params.set('size', filtro.itensPorPagina.toString());
 
-    if (filtro.descricao) {
-      params.set('descricao', filtro.descricao);
+    if (filtro.nome) {
+      params.set('nome', filtro.nome);
     }
 
-    if (filtro.dataVencimentoInicio) {
-      params.set('dataVencimentoDe',
-        moment(filtro.dataVencimentoInicio).format('YYYY-MM-DD'));
-    }
-
-    if (filtro.dataVencimentoFim) {
-      params.set('dataVencimentoAte',
-        moment(filtro.dataVencimentoFim).format('YYYY-MM-DD'));
-    }
-
-    return this.http.get(`${this.lancamentoURL}?resume`,
+    return this.http.get(`${this.pessoaURL}/search`,
       { headers, search: params })
       .toPromise()
       .then(response => {
 
         const responseJson = response.json();
-        const lancamentos = responseJson.content;
+        const pessoas = responseJson.content;
 
         const resultado = {
-          lancamentos,
+          pessoas,
           total: responseJson.totalElements
         };
 
@@ -65,9 +51,18 @@ export class LancamentoService {
     const headers = new Headers();
     headers.append('Authorization', 'Basic bWFyaWFAZ3VhdmFtb25leS5jb206YWRtaW4=');
 
-    return this.http.delete(`${this.lancamentoURL}/${codigo}`, { headers })
+    return this.http.delete(`${this.pessoaURL}/${codigo}`, { headers })
       .toPromise()
       .then(() => null);
   }
 
+  updateStatus(codigo: number, ativo: boolean): Promise<void> {
+    const headers = new Headers();
+    headers.append('Authorization', 'Basic bWFyaWFAZ3VhdmFtb25leS5jb206YWRtaW4=');
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.put(`${this.pessoaURL}/${codigo}/ativo`, ativo, { headers })
+      .toPromise()
+      .then(() => null);
+  }
 }

@@ -5,9 +5,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../app-routing.module';
 
-import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
-import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
-
 import { InputMaskModule } from 'primeng/inputmask';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { DropdownModule } from 'primeng/dropdown';
@@ -20,11 +17,10 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { AccordionModule } from 'primeng/accordion';
 
+import { CategoriaPesquisaComponent } from './categoria-pesquisa/categoria-pesquisa.component';
+
 @NgModule({
-  declarations: [
-    LancamentosPesquisaComponent,
-    LancamentoCadastroComponent
-  ],
+  declarations: [CategoriaPesquisaComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -44,9 +40,6 @@ import { AccordionModule } from 'primeng/accordion';
     CurrencyMaskModule,
     InputMaskModule
   ],
-  exports: [
-    LancamentosPesquisaComponent,
-    LancamentoCadastroComponent
-  ]
+  exports: [CategoriaPesquisaComponent]
 })
-export class LancamentoModule { }
+export class CategoriaModule { }

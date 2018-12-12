@@ -1,4 +1,3 @@
-import { MessagesModule } from 'primeng/messages';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -6,7 +5,6 @@ import { AppRoutingModule } from '../app-routing.module';
 
 import { PessoaPesquisaComponent } from './pessoa-pesquisa/pessoa-pesquisa.component';
 import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
-import { PessoaGridComponent } from './pessoa-grid/pessoa-grid.component';
 import { SharedModule } from './../shared/shared.module';
 
 import { InputMaskModule } from 'primeng/inputmask';
@@ -24,8 +22,7 @@ import { AccordionModule } from 'primeng/accordion';
 @NgModule({
   declarations: [
     PessoaPesquisaComponent,
-    PessoaCadastroComponent,
-    PessoaGridComponent
+    PessoaCadastroComponent
   ],
   imports: [
     FormsModule,

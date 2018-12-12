@@ -1,9 +1,16 @@
 <app-navbar></app-navbar>
-<app-lancamentos-pesquisa></app-lancamentos-pesquisa>
+<app-pessoa-pesquisa></app-pessoa-pesquisa>
 
 <!--
-
+  <app-lancamentos-pesquisa></app-lancamentos-pesquisa>
   <app-lancamento-cadastro></app-lancamento-cadastro>
   <app-pessoa-cadastro></app-pessoa-cadastro>
-  <app-pessoa-pesquisa></app-pessoa-pesquisa>
 -->
+
+<p-toast position="top-right"></p-toast>
+<p-confirmDialog header="Confirmar" icon="pi pi-exclamation-triangle" width="425" #confirm_dialog>
+  <p-footer>
+    <button type="button" pButton icon="pi pi-check" label="Sim" (click)="confirm_dialog.accept()"></button>
+    <button type="button" pButton icon="pi pi-times" label="Não" (click)="confirm_dialog.reject()"></button>
+  </p-footer>
+</p-confirmDialog>

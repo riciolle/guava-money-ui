@@ -1,13 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppComponent } from './app.component';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
-import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { LancamentoModule } from './lancamento/lancamento.module';
 import { PessoaModule } from './pessoa/pessoa.module';
-import { LancamentoService } from './lancamento/lancamento.service';
+import { LancamentoModule } from './lancamento/lancamento.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +23,7 @@ import { LancamentoService } from './lancamento/lancamento.service';
     BrowserAnimationsModule,
     HttpModule
   ],
-  providers: [LancamentoService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 
