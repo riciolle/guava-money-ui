@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -9,15 +10,18 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { PessoaService } from './../pessoa/pessoa.service';
 import { LancamentoService } from './../lancamento/lancamento.service';
 import { ErrorHandlerService } from './error-handler.service';
+import { PageNotFoundComponent } from './page-not-found.component';
 
 @NgModule({
   declarations:
     [
-      NavbarComponent
+      NavbarComponent,
+      PageNotFoundComponent
     ],
   imports:
     [
       CommonModule,
+      RouterModule,
       // IMPORTAÇÂO DO PRIMENG
       ToastModule,
       ConfirmDialogModule,

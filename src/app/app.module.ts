@@ -1,3 +1,4 @@
+import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
@@ -19,6 +20,7 @@ import { LancamentoModule } from './lancamento/lancamento.module';
     PessoaModule,
     CategoriaModule,
     CoreModule,
+    AppRoutingModule,
 
     // IMPORTAÇÂO DAS FUNCIONALIDADES ANGULAR
     BrowserModule,

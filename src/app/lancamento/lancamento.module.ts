@@ -1,4 +1,5 @@
 import { SharedModule } from './../shared/shared.module';
+import { LancamentoRoutingModule } from './lancamento-routing.module';
 
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -28,6 +29,8 @@ import { AccordionModule } from 'primeng/accordion';
   imports: [
     CommonModule,
     FormsModule,
+
+    LancamentoRoutingModule,
     SharedModule,
 
     // IMPORTAÇÂO DAS FUNCIONALIDADES PRIMENG
@@ -44,9 +47,6 @@ import { AccordionModule } from 'primeng/accordion';
     CurrencyMaskModule,
     InputMaskModule
   ],
-  exports: [
-    LancamentosPesquisaComponent,
-    LancamentoCadastroComponent
-  ]
+  exports: []
 })
 export class LancamentoModule { }

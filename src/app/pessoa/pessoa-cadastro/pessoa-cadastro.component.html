@@ -1,13 +1,13 @@
 <div class="container">
-  <form autocomplete="off">
+  <form #p="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
     <div class="ui-g">
       <div class="ui-g-12">
-        <h1>Nova Pessoa</h1>
+        <h1>{{editando ? 'Edição de ' : 'Nova '}} Pessoa</h1>
       </div>
 
       <div class="ui-g-12 ui-fluid">
         <label>Nome</label>
-        <input pInputText ngModel type="text" #nome="ngModel" name="nome" required minlength="5">
+        <input pInputText ngModel type="text" #nome="ngModel" name="nome" [(ngModel)]="pessoa.nome" required minlength="5">
         <app-message [control]="nome" error="required" text="Informe o nome"></app-message>
         <app-message [control]="nome" error="minlength" text="Mínimo de {{nome.errors?.minlength?.requiredLength }} caracteres "></app-message>
 
@@ -15,49 +15,54 @@
 
       <div class="ui-g-12 ui-md-9 ui-fluid">
         <label>Logradouro</label>
-        <input pInputText ngModel #logradouro="ngModel" type="text" name="logradouro" required>
+        <input pInputText ngModel #logradouro="ngModel" type="text" name="logradouro" [(ngModel)]="pessoa.endereco.logradouro"
+          required>
         <app-message [control]="logradouro" error="required" text="Informe um logradouro"></app-message>
       </div>
 
       <div class="ui-g-12 ui-md-3 ui-fluid">
         <label>Número</label>
-        <p-inputMask mask="99999999" name="numero" #numero="ngModel" ngModel required></p-inputMask>
+        <p-inputMask mask="99999999" name="numero" #numero="ngModel" [(ngModel)]="pessoa.endereco.numero" ngModel
+          required></p-inputMask>
         <app-message [control]="numero" error="required" text="Informe um número"></app-message>
       </div>
 
       <div class="ui-g-12 ui-md-4 ui-fluid">
         <label>Complemento</label>
-        <input pInputText type="text">
+        <input pInputText name="complemento" #complemento="ngModel" type="text" [(ngModel)]="pessoa.endereco.complemento">
       </div>
 
       <div class="ui-g-12 ui-md-4 ui-fluid">
         <label>Bairro</label>
-        <input pInputText #bairro="ngModel" ngModel type="text" name="bairro" required>
+        <input pInputText #bairro="ngModel" ngModel type="text" name="bairro" [(ngModel)]="pessoa.endereco.bairro"
+          required>
         <app-message [control]="bairro" error="required" text="Informe um bairro"></app-message>
       </div>
 
       <div class="ui-g-12 ui-md-4 ui-fluid">
         <label>CEP</label>
-        <p-inputMask name="cep" mask="99.999-999" ngModel #cep="ngModel" required></p-inputMask>
+        <p-inputMask name="cep" mask="99.999-999" ngModel #cep="ngModel" [(ngModel)]="pessoa.endereco.cep" required></p-inputMask>
         <app-message [control]="cep" error="required" text="Informe o CEP"></app-message>
       </div>
 
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>Cidade</label>
-        <input pInputText #cidade="ngModel" ngModel type="text" name="cidade" required>
+        <input pInputText #cidade="ngModel" ngModel type="text" name="cidade" [(ngModel)]="pessoa.endereco.cidade"
+          required>
         <app-message [control]="cidade" error="required" text="Informe a cidade"></app-message>
       </div>
 
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>Estado</label>
-        <input pInputText #estado="ngModel" ngModel type="text" name="estado" required>
+        <input pInputText #estado="ngModel" ngModel type="text" name="estado" [(ngModel)]="pessoa.endereco.estado"
+          required>
         <app-message [control]="estado" error="required" text="Informe o estado"></app-message>
       </div>
 
       <div class="ui-g-12">
         <button pButton type="submit" label="Salvar" style="margin: 0px 5px 0px 0px;"></button>
-        <button pButton class="ui-button-info" type="submit" label="Novo" style="margin: 0px 5px 0px 0px;"></button>
-        <button pButton class="ui-button-info" type="submit" label="Consulta"></button>
+        <button pButton type="button" label="Novo" class="ui-button-info" (click)="novo(f)" style="margin: 0px 5px 0px 0px;"></button>
+        <a pButton label="Consultar" routerLink="/pessoas"></a>
       </div>
 
     </div>

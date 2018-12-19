@@ -5,13 +5,11 @@ import { AppRoutingModule } from '../app-routing.module';
 
 import { PessoaPesquisaComponent } from './pessoa-pesquisa/pessoa-pesquisa.component';
 import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
+import { PessoaRoutingModule } from './pessoa-routing.module';
 import { SharedModule } from './../shared/shared.module';
 
 import { InputMaskModule } from 'primeng/inputmask';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
-import { DropdownModule } from 'primeng/dropdown';
-import { SelectButtonModule } from 'primeng/selectbutton';
-import { CalendarModule } from 'primeng/calendar';
 import { EditorModule } from 'primeng/editor';
 import { TooltipModule } from 'primeng/tooltip';
 import { TableModule } from 'primeng/table';
@@ -20,13 +18,11 @@ import { InputTextModule } from 'primeng/inputtext';
 import { AccordionModule } from 'primeng/accordion';
 
 @NgModule({
-  declarations: [
-    PessoaPesquisaComponent,
-    PessoaCadastroComponent
-  ],
   imports: [
     FormsModule,
     CommonModule,
+
+    PessoaRoutingModule,
     SharedModule,
 
     // IMPORTAÇÂO DAS FUNCIONALIDADES PRIMENG
@@ -37,15 +33,13 @@ import { AccordionModule } from 'primeng/accordion';
     TableModule,
     TooltipModule,
     EditorModule,
-    CalendarModule,
-    SelectButtonModule,
-    DropdownModule,
     CurrencyMaskModule,
     InputMaskModule
   ],
-  exports: [
+  declarations: [
     PessoaPesquisaComponent,
     PessoaCadastroComponent
-  ]
+  ],
+  exports: []
 })
 export class PessoaModule { }

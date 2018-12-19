@@ -1,6 +1,8 @@
 import { Http, Headers, URLSearchParams } from '@angular/http';
 import { Injectable } from '@angular/core';
 
+import { Pessoa } from './../core/model';
+
 export class PessoaFiltro {
   nome: string;
   pagina = 0;
@@ -47,6 +49,15 @@ export class PessoaService {
       });
   }
 
+  consultarTodasPessoas(): Promise<any> {
+    const headers = new Headers();
+
+    headers.append('Authorization', 'Basic bWFyaWFAZ3VhdmFtb25leS5jb206YWRtaW4=');
+    return this.http.get(`${this.pessoaURL}?`, { headers })
+      .toPromise()
+      .then(response => response.json());
+  }
+
   excluir(codigo: number): Promise<void> {
     const headers = new Headers();
     headers.append('Authorization', 'Basic bWFyaWFAZ3VhdmFtb25leS5jb206YWRtaW4=');
@@ -64,5 +75,33 @@ export class PessoaService {
     return this.http.put(`${this.pessoaURL}/${codigo}/ativo`, ativo, { headers })
       .toPromise()
       .then(() => null);
+  }
+
+  salvar(pessoa: Pessoa): Promise<Pessoa> {
+    const headers = new Headers();
+    headers.append('Authorization', 'Basic bWFyaWFAZ3VhdmFtb25leS5jb206YWRtaW4=');
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.post(`${this.pessoaURL}`, JSON.stringify(pessoa), { headers })
+      .toPromise()
+      .then(response => response.json());
+  }
+
+  atualizar(pessoa: Pessoa): Promise<Pessoa> {
+    const headers = new Headers();
+    headers.append('Authorization', 'Basic bWFyaWFAZ3VhdmFtb25leS5jb206YWRtaW4=');
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.put(`${this.pessoaURL}/${pessoa.codigo}`, JSON.stringify(pessoa), { headers })
+      .toPromise()
+      .then(response => response.json() as Pessoa);
+  }
+
+  buscarPorCodigo(codigo: number): Promise<Pessoa> {
+    const headers = new Headers();
+    headers.append('Authorization', 'Basic bWFyaWFAZ3VhdmFtb25leS5jb206YWRtaW4=');
+    return this.http.get(`${this.pessoaURL}/${codigo}`, { headers })
+      .toPromise()
+      .then(response => response.json() as Pessoa);
   }
 }
