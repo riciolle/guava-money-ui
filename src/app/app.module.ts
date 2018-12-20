@@ -9,10 +9,11 @@ import { CategoriaModule } from './categoria/categoria.module';
 import { CoreModule } from './core/core.module';
 import { PessoaModule } from './pessoa/pessoa.module';
 import { LancamentoModule } from './lancamento/lancamento.module';
+import { SegurancaModule } from './seguranca/seguranca.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     // IMPORTAÇÂO DOS MODULOS DOS SISTEMA
@@ -20,6 +21,7 @@ import { LancamentoModule } from './lancamento/lancamento.module';
     PessoaModule,
     CategoriaModule,
     CoreModule,
+    SegurancaModule,
     AppRoutingModule,
 
     // IMPORTAÇÂO DAS FUNCIONALIDADES ANGULAR

@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../app-routing.module';
 
 import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
-import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
+import { LancamentoPesquisaComponent } from './lancamento-pesquisa/lancamento-pesquisa.component';
 
 import { InputMaskModule } from 'primeng/inputmask';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
@@ -23,7 +23,7 @@ import { AccordionModule } from 'primeng/accordion';
 
 @NgModule({
   declarations: [
-    LancamentosPesquisaComponent,
+    LancamentoPesquisaComponent,
     LancamentoCadastroComponent
   ],
   imports: [

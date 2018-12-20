@@ -11,6 +11,7 @@ import { PessoaService } from './../pessoa/pessoa.service';
 import { LancamentoService } from './../lancamento/lancamento.service';
 import { ErrorHandlerService } from './error-handler.service';
 import { PageNotFoundComponent } from './page-not-found.component';
+import { AuthService } from './../seguranca/auth.service';
 
 @NgModule({
   declarations:
@@ -38,7 +39,8 @@ import { PageNotFoundComponent } from './page-not-found.component';
       LancamentoService,
       PessoaService,
       MessageService,
-      ConfirmationService
+      ConfirmationService,
+      AuthService
     ]
 })
 export class CoreModule { }

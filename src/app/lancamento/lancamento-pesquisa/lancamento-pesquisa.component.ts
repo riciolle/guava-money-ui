@@ -7,11 +7,11 @@ import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { LancamentoService, LancamentoFiltro } from '../lancamento.service';
 
 @Component({
-  selector: 'app-lancamentos-pesquisa',
-  templateUrl: './lancamentos-pesquisa.component.html',
-  styleUrls: ['./lancamentos-pesquisa.component.css']
+  selector: 'app-lancamento-pesquisa',
+  templateUrl: './lancamento-pesquisa.component.html',
+  styleUrls: ['./lancamento-pesquisa.component.css']
 })
-export class LancamentosPesquisaComponent implements OnInit {
+export class LancamentoPesquisaComponent implements OnInit {
 
   @ViewChild('tabela') grid;
   totalRegistros = 0;

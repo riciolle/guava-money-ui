@@ -38,10 +38,8 @@ export class PessoaCadastroComponent implements OnInit {
 
   salvar(form: FormControl) {
     if (this.editando) {
-      console.log('Passou aqui atualizar');
       this.atualizarPessoa(form);
     } else {
-      console.log('Passou aqui salvar');
       this.adicionarPessoa(form);
     }
   }
@@ -74,9 +72,8 @@ export class PessoaCadastroComponent implements OnInit {
   }
 
   novo(form: FormControl) {
-    form.reset();
     this.pessoa = new Pessoa();
-    this.router.navigate(['/pessoas/nova']);
+    this.router.navigate(['/pessoa/novo']);
   }
 
 }

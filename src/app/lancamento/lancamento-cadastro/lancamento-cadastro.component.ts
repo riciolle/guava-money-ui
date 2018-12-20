@@ -52,7 +52,7 @@ export class LancamentoCadastroComponent implements OnInit {
   novo(form: FormControl) {
     // form.reset();
     this.lancamento = new Lancamento();
-    this.router.navigate(['/lancamentos/novo']);
+    this.router.navigate(['/lancamento/novo']);
   }
 
   salvar(form: FormControl) {
@@ -66,8 +66,8 @@ export class LancamentoCadastroComponent implements OnInit {
   salvaLancamento(form: FormControl) {
     this.lancamentoService.salvar(this.lancamento)
       .then(lancamento => {
-        this.messageService.add({ severity: 'success', summary: 'Serviço de Mensagem', detail: 'Lançamento adicionado com sucesso !' });
-        this.router.navigate(['/lancamentos', lancamento.codigo]);
+        this.messageService.add({ severity: 'success', summary: 'Mensageiro Guava', detail: 'Lançamento adicionado com sucesso !' });
+        this.router.navigate(['/lancamento', lancamento.codigo]);
       })
       .catch(erro => this.errorHandlerService.handle(erro));
   }
@@ -77,7 +77,7 @@ export class LancamentoCadastroComponent implements OnInit {
       .then(lancamento => {
         this.lancamento = lancamento;
 
-        this.messageService.add({ severity: 'success', summary: 'Serviço de Mensagem', detail: 'Lançamento atualizado com sucesso !' });
+        this.messageService.add({ severity: 'success', summary: 'Mensageiro Guava', detail: 'Lançamento atualizado com sucesso !' });
       })
       .catch(erro => this.errorHandlerService.handle(erro));
   }

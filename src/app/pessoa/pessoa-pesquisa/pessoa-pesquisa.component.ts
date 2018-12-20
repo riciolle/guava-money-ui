@@ -6,7 +6,6 @@ import { LazyLoadEvent, MessageService } from 'primeng/components/common/api';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { PessoaFiltro, PessoaService } from './../pessoa.service';
 import { Pessoa } from 'src/app/core/model';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pessoa-pesquisa',
@@ -25,8 +24,7 @@ export class PessoaPesquisaComponent implements OnInit {
     private pessoaService: PessoaService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
-    private errorHandler: ErrorHandlerService,
-    private router: Router
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit() { }
