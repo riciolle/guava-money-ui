@@ -31,6 +31,6 @@ export class ErrorHandlerService {
       console.log('Ocorreu um erro inesperado ' + errorResponse);
     }
 
-    this.messageService.add({ severity: 'error', summary: 'Serviço de Mensagem', detail: ' ' + msg });
+    this.messageService.add({ severity: 'error', summary: 'Mensageiro Guava', detail: ' ' + msg });
   }
 }
