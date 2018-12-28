@@ -1,8 +1,9 @@
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+// import { HttpClientModule } from '@angular/common/http';
 
-import { JwtHelper } from 'angular2-jwt';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { ToastModule } from 'primeng/toast';
 import { MessageService, ConfirmationService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
@@ -24,6 +25,7 @@ import { AuthService } from './../seguranca/auth.service';
     [
       CommonModule,
       RouterModule,
+      // HttpClientModule,
       // IMPORTAÇÂO DO PRIMENG
       ToastModule,
       ConfirmDialogModule,
@@ -42,7 +44,7 @@ import { AuthService } from './../seguranca/auth.service';
       MessageService,
       ConfirmationService,
       AuthService,
-      JwtHelper
+      JwtHelperService
     ]
 })
 export class CoreModule { }

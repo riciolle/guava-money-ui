@@ -1,4 +1,4 @@
-import { Http, Headers, URLSearchParams } from '@angular/http';
+import { HttpParams, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Pessoa } from './../core/model';
@@ -16,33 +16,28 @@ export class PessoaService {
 
   pessoaURL = 'http://localhost:8080/pessoa';
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
-  consultar(filtro: any): Promise<any> {
+  consultar(filtro: PessoaFiltro): Promise<any> {
 
-    const headers = new Headers();
-    const params = new URLSearchParams();
-
-    headers.append('Authorization', 'Basic bWFyaWFAZ3VhdmFtb25leS5jb206YWRtaW4=');
-
-    params.set('page', filtro.pagina.toString());
-    params.set('size', filtro.itensPorPagina.toString());
+    let params = new HttpParams({
+      fromObject: {
+        page: filtro.pagina.toString(),
+        size: filtro.itensPorPagina.toString()
+      }
+    });
 
     if (filtro.nome) {
-      params.set('nome', filtro.nome);
+      params = params.set('nome', filtro.nome);
     }
 
-    return this.http.get(`${this.pessoaURL}/search`,
-      { headers, search: params })
+    return this.http.get<any>(`${this.pessoaURL}/search`, { params })
       .toPromise()
       .then(response => {
-
-        const responseJson = response.json();
-        const pessoas = responseJson.content;
-
+        const pessoas = response.content;
         const resultado = {
           pessoas,
-          total: responseJson.totalElements
+          total: response.totalElements
         };
 
         return resultado;
@@ -50,58 +45,39 @@ export class PessoaService {
   }
 
   consultarTodasPessoas(): Promise<any> {
-    const headers = new Headers();
 
-    headers.append('Authorization', 'Basic bWFyaWFAZ3VhdmFtb25leS5jb206YWRtaW4=');
-    return this.http.get(`${this.pessoaURL}?`, { headers })
+    return this.http.get(`${this.pessoaURL}?`)
       .toPromise()
-      .then(response => response.json());
+      .then(response => response);
   }
 
   excluir(codigo: number): Promise<void> {
-    const headers = new Headers();
-    headers.append('Authorization', 'Basic bWFyaWFAZ3VhdmFtb25leS5jb206YWRtaW4=');
-
-    return this.http.delete(`${this.pessoaURL}/${codigo}`, { headers })
+    return this.http.delete(`${this.pessoaURL}/${codigo}`)
       .toPromise()
       .then(() => null);
   }
 
   updateStatus(codigo: number, ativo: boolean): Promise<void> {
-    const headers = new Headers();
-    headers.append('Authorization', 'Basic bWFyaWFAZ3VhdmFtb25leS5jb206YWRtaW4=');
-    headers.append('Content-Type', 'application/json');
-
-    return this.http.put(`${this.pessoaURL}/${codigo}/ativo`, ativo, { headers })
+    return this.http.put(`${this.pessoaURL}/${codigo}/ativo`, ativo)
       .toPromise()
       .then(() => null);
   }
 
   salvar(pessoa: Pessoa): Promise<Pessoa> {
-    const headers = new Headers();
-    headers.append('Authorization', 'Basic bWFyaWFAZ3VhdmFtb25leS5jb206YWRtaW4=');
-    headers.append('Content-Type', 'application/json');
-
-    return this.http.post(`${this.pessoaURL}`, JSON.stringify(pessoa), { headers })
+    return this.http.post(`${this.pessoaURL}`, JSON.stringify(pessoa))
       .toPromise()
-      .then(response => response.json());
+      .then(response => response as Pessoa);
   }
 
   atualizar(pessoa: Pessoa): Promise<Pessoa> {
-    const headers = new Headers();
-    headers.append('Authorization', 'Basic bWFyaWFAZ3VhdmFtb25leS5jb206YWRtaW4=');
-    headers.append('Content-Type', 'application/json');
-
-    return this.http.put(`${this.pessoaURL}/${pessoa.codigo}`, JSON.stringify(pessoa), { headers })
+    return this.http.put(`${this.pessoaURL}/${pessoa.codigo}`, JSON.stringify(pessoa))
       .toPromise()
-      .then(response => response.json() as Pessoa);
+      .then(response => response as Pessoa);
   }
 
   buscarPorCodigo(codigo: number): Promise<Pessoa> {
-    const headers = new Headers();
-    headers.append('Authorization', 'Basic bWFyaWFAZ3VhdmFtb25leS5jb206YWRtaW4=');
-    return this.http.get(`${this.pessoaURL}/${codigo}`, { headers })
+    return this.http.get(`${this.pessoaURL}/${codigo}`)
       .toPromise()
-      .then(response => response.json() as Pessoa);
+      .then(response => response as Pessoa);
   }
 }

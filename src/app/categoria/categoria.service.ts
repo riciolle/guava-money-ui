@@ -1,4 +1,6 @@
-import { Http, Headers, URLSearchParams } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+
+
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -8,17 +10,12 @@ export class CategoriaService {
 
   categoriaURL = 'http://localhost:8080/categorias';
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
   listarTodos(): Promise<any> {
-
-    const headers = new Headers();
-
-    headers.append('Authorization', 'Basic bWFyaWFAZ3VhdmFtb25leS5jb206YWRtaW4=');
-
-    return this.http.get(`${this.categoriaURL}?`, { headers })
+    return this.http.get(`${this.categoriaURL}?`)
       .toPromise()
-      .then(response => response.json());
+      .then(response => response);
   }
 
 }
