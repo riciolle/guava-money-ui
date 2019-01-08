@@ -1,9 +1,10 @@
-import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import * as moment from 'moment';
 import { Lancamento } from './../core/model';
 import 'rxjs/add/operator/toPromise';
+import { GuavaMoneyHttp } from '../seguranca/guava-money-http';
 
 export class LancamentoFiltro {
   descricao: string;
@@ -13,6 +14,8 @@ export class LancamentoFiltro {
   itensPorPagina = 5;
 }
 
+const headers = new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8' });
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,7 +23,7 @@ export class LancamentoService {
 
   lancamentoURL = 'http://localhost:8080/lancamentos';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: GuavaMoneyHttp) { }
 
   consultar(filtro: LancamentoFiltro): Promise<any> {
 
@@ -49,7 +52,6 @@ export class LancamentoService {
       .toPromise()
       .then(response => {
         const lancamentos = response.content;
-        console.log(response.totalElements);
         const resultado = {
           lancamentos,
           total: response.totalElements
@@ -66,16 +68,15 @@ export class LancamentoService {
   }
 
   salvar(lancamento: Lancamento): Promise<Lancamento> {
-    return this.http.post<Lancamento>(`${this.lancamentoURL}`, JSON.stringify(lancamento))
-      .toPromise()
-      .then(response => response);
+    return this.http.post<Lancamento>(`${this.lancamentoURL}`, JSON.stringify(lancamento), { headers: headers })
+      .toPromise();
   }
 
   atualizar(lancamento: Lancamento): Promise<Lancamento> {
-    return this.http.put(`${this.lancamentoURL}/${lancamento.codigo}`, JSON.stringify(lancamento))
+    return this.http.put<Lancamento>(`${this.lancamentoURL}/${lancamento.codigo}`, JSON.stringify(lancamento), { headers: headers })
       .toPromise()
       .then(response => {
-        const lancamentoAlterado = response as Lancamento;
+        const lancamentoAlterado = response;
 
         this.convertStringParaDatas([lancamentoAlterado]);
 
@@ -84,10 +85,10 @@ export class LancamentoService {
   }
 
   buscarPorCodigo(codigo: number): Promise<Lancamento> {
-    return this.http.get(`${this.lancamentoURL}/${codigo}`)
+    return this.http.get<Lancamento>(`${this.lancamentoURL}/${codigo}`)
       .toPromise()
       .then(response => {
-        const lancamento = response as Lancamento;
+        const lancamento = response;
 
         this.convertStringParaDatas([lancamento]);
 

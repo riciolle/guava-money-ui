@@ -29,6 +29,17 @@
   color: #fff;
 }
 
+.navbar-ultimo-login {
+  padding: 15px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
 .navbar-menuitem {
   padding: 15px;
 }
