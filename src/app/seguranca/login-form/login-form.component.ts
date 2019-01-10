@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
+import { AuthService } from '../auth.service';
 import { ErrorHandlerService } from './../../core/error-handler.service';
 
 @Component({
@@ -11,9 +11,11 @@ import { ErrorHandlerService } from './../../core/error-handler.service';
 })
 export class LoginFormComponent implements OnInit {
 
-  constructor(private auth: AuthService,
+  constructor(
+    private auth: AuthService,
     private errorHandlerService: ErrorHandlerService,
-    private router: Router) { }
+    private router: Router
+  ) { }
 
   ngOnInit() { }
 

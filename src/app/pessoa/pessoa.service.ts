@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 import { Pessoa } from './../core/model';
 import { GuavaMoneyHttp } from '../seguranca/guava-money-http';
-
+import { environment } from './../../environments/environment';
 export class PessoaFiltro {
   nome: string;
   pagina = 0;
@@ -17,9 +17,11 @@ const headers = new HttpHeaders({ 'Content-Type': 'application/json; charset=utf
 })
 export class PessoaService {
 
-  pessoaURL = 'http://localhost:8080/pessoa';
+  pessoaURL: string;
 
-  constructor(private http: GuavaMoneyHttp) { }
+  constructor(private http: GuavaMoneyHttp) {
+    this.pessoaURL = `${environment.apiUrl}/pessoa`;
+  }
 
   consultar(filtro: PessoaFiltro): Promise<any> {
 

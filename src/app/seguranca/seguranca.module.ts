@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth.guard';
 import { HttpClientModule } from '@angular/common/http';
 
 import { FormsModule } from '@angular/forms';
@@ -10,6 +11,7 @@ import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 
 import { SegurancaRoutingModule } from './seguranca-routing.module';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { LogoutService } from './logout.service';
 import { environment } from 'src/environments/environment';
 
 export function tokenGetter() {
@@ -35,6 +37,11 @@ export function tokenGetter() {
       }
     })
   ],
-  declarations: [LoginFormComponent]
+  declarations: [LoginFormComponent],
+  providers:
+    [
+      AuthGuard,
+      LogoutService
+    ]
 })
 export class SegurancaModule { }

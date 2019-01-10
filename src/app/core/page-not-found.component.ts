@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-page-not-foun',
   template: `
     <div class="container">
       <h1 class="text-center">Página não encontrada</h1>

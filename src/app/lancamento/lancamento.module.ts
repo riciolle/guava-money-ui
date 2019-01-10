@@ -22,10 +22,6 @@ import { InputTextModule } from 'primeng/inputtext';
 import { AccordionModule } from 'primeng/accordion';
 
 @NgModule({
-  declarations: [
-    LancamentoPesquisaComponent,
-    LancamentoCadastroComponent
-  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -46,6 +42,10 @@ import { AccordionModule } from 'primeng/accordion';
     DropdownModule,
     CurrencyMaskModule,
     InputMaskModule
+  ],
+  declarations: [
+    LancamentoPesquisaComponent,
+    LancamentoCadastroComponent
   ],
   exports: []
 })

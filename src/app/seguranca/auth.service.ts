@@ -3,16 +3,18 @@ import { Injectable } from '@angular/core';
 
 import { JwtHelperService } from '@auth0/angular-jwt';
 
+import { environment } from './../../environments/environment';
 @Injectable()
 export class AuthService {
 
-  oauthTokenUrl = 'http://localhost:8080/oauth/token';
+  oauthTokenUrl: string;
   jwtPayLoad: any;
 
   constructor(
     private http: HttpClient,
     private jwtHelper: JwtHelperService
   ) {
+    this.oauthTokenUrl = `${environment.apiUrl}/oauth/token`;
     this.carregarToken();
   }
 
@@ -30,7 +32,7 @@ export class AuthService {
       })
       .catch(response => {
         if (response.status === 400) {
-          if (response.error === 'invalid_grant') {
+          if (response.error.error === 'invalid_grant') {
             return Promise.reject('Usuário ou senha inválida ! ');
           }
         }
@@ -62,8 +64,22 @@ export class AuthService {
     return !token || this.jwtHelper.isTokenExpired(token);
   }
 
-  temPermissao(permissao: string) {
+  havePermission(permissao: string) {
     return this.jwtPayLoad && this.jwtPayLoad.authorities.includes(permissao);
+  }
+
+  haveAnyPermission(roles) {
+    for (const role of roles) {
+      if (this.havePermission(role)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  clearAccessToken() {
+    localStorage.removeItem('token');
+    this.jwtPayLoad = null;
   }
 
   private armazenarToKen(token: string) {

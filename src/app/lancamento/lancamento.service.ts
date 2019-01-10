@@ -1,10 +1,12 @@
-import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import * as moment from 'moment';
-import { Lancamento } from './../core/model';
 import 'rxjs/add/operator/toPromise';
+
+import { Lancamento } from './../core/model';
 import { GuavaMoneyHttp } from '../seguranca/guava-money-http';
+import { environment } from './../../environments/environment';
 
 export class LancamentoFiltro {
   descricao: string;
@@ -21,9 +23,11 @@ const headers = new HttpHeaders({ 'Content-Type': 'application/json; charset=utf
 })
 export class LancamentoService {
 
-  lancamentoURL = 'http://localhost:8080/lancamentos';
+  lancamentoURL: string;
 
-  constructor(private http: GuavaMoneyHttp) { }
+  constructor(private http: GuavaMoneyHttp) {
+    this.lancamentoURL = `${environment.apiUrl}/lancamentos`;
+   }
 
   consultar(filtro: LancamentoFiltro): Promise<any> {
 

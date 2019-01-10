@@ -5,6 +5,8 @@ import { Observable, from as observableFromPromise } from 'rxjs';
 
 import { AuthService } from './auth.service';
 
+export class NotAuthenticatedError { }
+
 @Injectable()
 export class GuavaMoneyHttp extends HttpClient {
 
@@ -48,6 +50,9 @@ export class GuavaMoneyHttp extends HttpClient {
       console.log('Requisição HTTP com access token inválido. Obtendo novo token...');
       const chamadaNovoAccessToken = this.auth.newAccessToken()
         .then(() => {
+          if (this.auth.isAccessTokenInvalid) {
+            throw new NotAuthenticatedError();
+          }
           return fn().toPromise();
         });
 
