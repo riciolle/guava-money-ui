@@ -5,10 +5,7 @@ import { AppComponent } from './app.component';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
-import { CategoriaModule } from './categoria/categoria.module';
 import { CoreModule } from './core/core.module';
-import { PessoaModule } from './pessoa/pessoa.module';
-import { LancamentoModule } from './lancamento/lancamento.module';
 import { SegurancaModule } from './seguranca/seguranca.module';
 
 @NgModule({
@@ -17,9 +14,6 @@ import { SegurancaModule } from './seguranca/seguranca.module';
   ],
   imports: [
     // IMPORTAÇÂO DOS MODULOS DOS SISTEMA
-    LancamentoModule,
-    PessoaModule,
-    CategoriaModule,
     CoreModule,
     SegurancaModule,
     AppRoutingModule,

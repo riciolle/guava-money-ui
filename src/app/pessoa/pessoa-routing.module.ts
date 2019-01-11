@@ -8,19 +8,19 @@ import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.compo
 const routes: Routes =
   [
     {
-      path: 'pessoa',
+      path: '',
       component: PessoaPesquisaComponent,
       canActivate: [AuthGuard],
       data: { roles: ['ROLE_PESQUISAR_PESSOA'] }
     },
     {
-      path: 'pessoa/novo',
+      path: 'novo',
       component: PessoaCadastroComponent,
       canActivate: [AuthGuard],
       data: { roles: ['ROLE_CADASTRAR_PESSOA'] }
     },
     {
-      path: 'pessoa/:codigo',
+      path: ':codigo',
       component: PessoaCadastroComponent,
       canActivate: [AuthGuard],
       data: { roles: ['ROLE_CADASTRAR_PESSOA'] }

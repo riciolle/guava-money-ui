@@ -27,6 +27,7 @@ export function tokenGetter() {
     ButtonModule,
 
     SegurancaRoutingModule,
+
     HttpClientModule,
     JwtModule.forRoot({
       config: {

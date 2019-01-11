@@ -24,7 +24,7 @@
 
   <div class="ui-g">
     <div class="ui-g-12">
-      <p-table [value]="lancamentos" [responsive]="true" emptyMessage="Nenhuma informação encontrado" [paginator]="true"
+      <p-table [value]="lancamentos" [responsive]="true" emptyMessage="Nenhuma informação encontrada" [paginator]="true"
         [rows]="filtro.itensPorPagina" [lazy]="true" [totalRecords]="totalRegistros" (onLazyLoad)="proximaPagina($event)"
         #tabela>
         <ng-template pTemplate="caption">
@@ -34,10 +34,10 @@
           <tr>
             <th>Pessoa</th>
             <th>Descrição</th>
-            <th class="col-data">Vencimento</th>
-            <th class="col-data">Pagamento</th>
-            <th class="col-valor">Valor</th>
-            <th class="col-acoes">Ações</th>
+            <th class="col-data-header">Vencimento</th>
+            <th class="col-data-header">Pagamento</th>
+            <th class="col-valor-header">Valor</th>
+            <th class="col-acoes-header">Ações</th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-lancamento>
@@ -46,9 +46,8 @@
             <td>{{lancamento.descricao}}</td>
             <td class="col-data">{{lancamento.dataVencimento | date:"MM/dd/yyyy" }}</td>
             <td class="col-data">{{lancamento.dataPagamento | date:"MM/dd/yyyy" }}</td>
-            <td class="col-valor" [ngClass]="lancamento.tipoLancamento ==='DESPESA' ? 'despesa' : 'receita'">{{lancamento.valor
-              |
-              currency:'BRL':true:'1.2-2'}}</td>
+            <td class="col-valor" [ngClass]="lancamento.tipoLancamento ==='DESPESA' ? 'despesa' : 'receita'">
+              {{lancamento.valor | currency:'BRL':true:'1.2-2'}}</td>
             <td class="col-acoes">
               <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top" style="margin: 0px 5px 0px 0px;"
                 [routerLink]="['/lancamento', lancamento.codigo]"></a>

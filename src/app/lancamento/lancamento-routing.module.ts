@@ -8,19 +8,19 @@ import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-ca
 const routes: Routes =
   [
     {
-      path: 'lancamento',
+      path: '',
       component: LancamentoPesquisaComponent,
       canActivate: [AuthGuard],
       data: { roles: ['ROLE_PESQUISAR_LANCAMENTO']}
     },
     {
-      path: 'lancamento/novo',
+      path: 'novo',
       component: LancamentoCadastroComponent,
       canActivate: [AuthGuard],
       data: { roles: ['ROLE_CADASTRAR_LANCAMENTO']}
     },
     {
-      path: 'lancamento/:codigo',
+      path: ':codigo',
       component: LancamentoCadastroComponent,
       canActivate: [AuthGuard],
       data: { roles: ['ROLE_CADASTRAR_LANCAMENTO']}

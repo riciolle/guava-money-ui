@@ -1,7 +1,8 @@
 import { RouterModule } from '@angular/router';
 import { NgModule, LOCALE_ID } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import localePt from '@angular/common/locales/pt';
 
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { ToastModule } from 'primeng/toast';
@@ -17,6 +18,8 @@ import { PageNotFoundComponent } from './page-not-found.component';
 import { AuthService } from './../seguranca/auth.service';
 import { GuavaMoneyHttp } from '../seguranca/guava-money-http';
 import { PageNotAuthorizedComponent } from './page-not-authorized.component';
+
+registerLocaleData(localePt);
 
 @NgModule({
   imports:
@@ -52,7 +55,7 @@ import { PageNotAuthorizedComponent } from './page-not-authorized.component';
       ConfirmationService,
       JwtHelperService,
       GuavaMoneyHttp,
-      { provide: LOCALE_ID, useValue: 'pt-BR' }
+      { provide: LOCALE_ID, useValue: 'pt' }
     ]
 })
 export class CoreModule { }

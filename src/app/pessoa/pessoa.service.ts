@@ -49,11 +49,9 @@ export class PessoaService {
       });
   }
 
-  consultarTodasPessoas(): Promise<any> {
-
-    return this.http.get<any>(`${this.pessoaURL}`)
-      .toPromise()
-      .then(response => response.content);
+  consultarTodasPessoas(): Promise<Pessoa[]> {
+    return this.http.get<Pessoa[]>(`${this.pessoaURL}`)
+      .toPromise();
   }
 
   excluir(codigo: number): Promise<void> {

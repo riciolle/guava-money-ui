@@ -9,6 +9,7 @@ import { PessoaService } from './../../pessoa/pessoa.service';
 import { LancamentoService } from './../lancamento.service';
 
 import { MessageService } from 'primeng/api';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-lancamento-cadastro',
@@ -87,7 +88,9 @@ export class LancamentoCadastroComponent implements OnInit {
       .then(lancamento => {
         this.lancamento = lancamento;
       })
-      .catch(erro => this.errorHandlerService.handle(erro));
+      .catch(erro => {
+        this.errorHandlerService.handle(erro);
+      });
   }
 
   carregarCategorias() {
