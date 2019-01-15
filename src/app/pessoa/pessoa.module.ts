@@ -26,7 +26,6 @@ import { AccordionModule } from 'primeng/accordion';
     SharedModule,
 
     // IMPORTAÇÂO DAS FUNCIONALIDADES PRIMENG
-    AppRoutingModule,
     AccordionModule,
     InputTextModule,
     ButtonModule,

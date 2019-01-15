@@ -1,6 +1,3 @@
-import { HttpClient } from '@angular/common/http';
-
-
 import { Injectable } from '@angular/core';
 import { GuavaMoneyHttp } from '../seguranca/guava-money-http';
 import { environment } from './../../environments/environment';

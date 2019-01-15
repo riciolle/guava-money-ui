@@ -8,16 +8,18 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { ToastModule } from 'primeng/toast';
 import { MessageService, ConfirmationService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { MenuModule } from 'primeng/menu';
+import { ContextMenuModule } from 'primeng/contextmenu';
 
 import { CategoriaService } from './../categoria/categoria.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PessoaService } from './../pessoa/pessoa.service';
 import { LancamentoService } from './../lancamento/lancamento.service';
 import { ErrorHandlerService } from './error-handler.service';
-import { PageNotFoundComponent } from './page-not-found.component';
 import { AuthService } from './../seguranca/auth.service';
 import { GuavaMoneyHttp } from '../seguranca/guava-money-http';
-import { PageNotAuthorizedComponent } from './page-not-authorized.component';
+import { NaoAutorizadoComponent } from './../nao-autorizado/nao-autorizado.component';
+import { PaginaNaoEncontradaComponent } from './../pagina-nao-encontrada/pagina-nao-encontrada.component';
 
 registerLocaleData(localePt);
 
@@ -30,18 +32,20 @@ registerLocaleData(localePt);
       // IMPORTAÇÂO DO PRIMENG
       ToastModule,
       ConfirmDialogModule,
+      MenuModule,
+      ContextMenuModule
     ],
   declarations:
     [
       NavbarComponent,
-      PageNotFoundComponent,
-      PageNotAuthorizedComponent
+      PaginaNaoEncontradaComponent,
+      NaoAutorizadoComponent
     ],
   exports:
     [
       NavbarComponent,
       ToastModule,
-      ConfirmDialogModule,
+      ConfirmDialogModule
     ],
   providers:
     [
@@ -50,11 +54,11 @@ registerLocaleData(localePt);
       CategoriaService,
       ErrorHandlerService,
       AuthService,
-
-      MessageService,
-      ConfirmationService,
-      JwtHelperService,
       GuavaMoneyHttp,
+
+      ConfirmationService,
+      MessageService,
+      JwtHelperService,
       { provide: LOCALE_ID, useValue: 'pt' }
     ]
 })
