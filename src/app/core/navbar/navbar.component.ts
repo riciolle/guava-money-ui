@@ -14,10 +14,6 @@ import { MenuItem } from 'primeng/api';
 
 export class NavbarComponent implements OnInit {
 
-  private items: MenuItem[];
-
-  private items2: MenuItem[];
-
   exibindoMenu = false;
 
   constructor(
@@ -25,46 +21,21 @@ export class NavbarComponent implements OnInit {
     private logoutService: LogoutService,
     private errorHandlerService: ErrorHandlerService,
     private router: Router
-  ) {
+  ) { }
 
-  }
-
-  ngOnInit() {
-
-    this.items = [{
-      label: 'File',
-      items: [
-        { label: 'New', icon: 'fa fa-plus', routerLinkActiveOptions: 'ativo', routerLink: '/pessoa' },
-        { label: 'Open', icon: 'fa fa-download' }
-      ]
-    },
-    {
-      label: 'Edit',
-      items: [
-        { label: 'Undo', icon: 'fa fa-refresh' },
-        { label: 'Redo', icon: 'fa fa-repeat' }
-      ]
-    }];
-
-    this.items2 = [
-      {
-          label: 'Next',
-          icon: 'pi pi-fw pi-chevron-right'
-      },
-      {
-          label: 'Prev',
-          icon: 'pi pi-fw pi-chevron-left'
-      }
-  ];
-
-  }
+  ngOnInit() { }
 
   logout() {
     this.logoutService.logout()
       .then(() => {
+        this.exibindoMenu = false;
         this.router.navigate(['/login']);
       })
       .catch(error => this.errorHandlerService.handle(error));
+  }
+
+  exibindoNavBar() {
+    return this.router.url !== '/login';
   }
 
 }

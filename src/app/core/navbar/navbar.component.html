@@ -2,7 +2,9 @@
   <div class="container">
     <div class="ui-g">
       <div class="ui-g-12">
-        <a href="javascript:;" class="navbar-toggle" (click)="exibindoMenu = !exibindoMenu"><i class="pi pi-bars"></i></a>
+        <a href="javascript:;" class="navbar-toggle" (click)="exibindoMenu = !exibindoMenu">
+          <img *ngIf='exibindoNavBar()' #img src="assets/imagens/guava-32.ico">
+        </a>
       </div>
     </div>
   </div>

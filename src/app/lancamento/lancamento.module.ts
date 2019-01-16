@@ -3,8 +3,7 @@ import { LancamentoRoutingModule } from './lancamento-routing.module';
 
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { AppRoutingModule } from '../app-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
 import { LancamentoPesquisaComponent } from './lancamento-pesquisa/lancamento-pesquisa.component';
@@ -25,6 +24,7 @@ import { AccordionModule } from 'primeng/accordion';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
 
     LancamentoRoutingModule,
     SharedModule,
