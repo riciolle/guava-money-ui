@@ -1,7 +1,14 @@
 <app-navbar></app-navbar>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
-
+<div class="p-grid">
+  <div class="p-col-12 p-md-2">
+  </div>
+  <div class="p-col-12 p-md-10  p-col-nogutter">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="p-col-12">
+    <app-footer></app-footer>
+  </div>
+</div>
 
 <!--
   <app-pessoa-cadastro></app-pessoa-cadastro>

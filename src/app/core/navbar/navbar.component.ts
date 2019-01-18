@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { AuthService } from './../../seguranca/auth.service';
 import { LogoutService } from './../../seguranca/logout.service';
 import { ErrorHandlerService } from './../error-handler.service';
-import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-navbar',
