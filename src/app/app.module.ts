@@ -6,12 +6,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { SegurancaModule } from './seguranca/seguranca.module';
-import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    FooterComponent
+    AppComponent
   ],
   imports: [
     // IMPORTAÇÂO DOS MODULOS DOS SISTEMA

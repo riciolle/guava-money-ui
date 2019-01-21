@@ -1,17 +1,7 @@
-<nav class="navbar">
-  <div class="container">
-    <div class="p-col">
-      <div class="p-col-12">
-        <a href="javascript:;" class="navbar-toggle" (click)="exibindoMenu = !exibindoMenu">
-          <img *ngIf='exibindoNavBar()' #img src="assets/imagens/guava-32.ico">
-        </a>
-      </div>
-    </div>
-  </div>
-  <ul class="navbar-menu" [hidden]="!exibindoMenu">
-    <li class="navbar-usuario">{{ auth.jwtPayLoad?.nome }}</li>
-    <li class="navbar-menuitem" routerLinkActive="ativo" *ngIf="auth.havePermission('ROLE_PESQUISAR_LANCAMENTO')" ><a routerLink="/lancamento">Lançamento</a></li>
-    <li class="navbar-menuitem" routerLinkActive="ativo" *ngIf="auth.havePermission('ROLE_PESQUISAR_PESSOA')" ><a routerLink="/pessoa">Pessoa</a></li>
-    <li class="navbar-menuitem"><a href="javascript:;" (click)="logout()">Logout</a></li>
-  </ul>
-</nav>
+
+
+
+  <p-panelMenu [model]="items" [style]="{'width':'300px'}">
+
+  </p-panelMenu>
+

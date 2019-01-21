@@ -9,6 +9,7 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService, ConfirmationService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MenuModule } from 'primeng/menu';
+import { PanelMenuModule } from 'primeng/panelmenu';
 import { ContextMenuModule } from 'primeng/contextmenu';
 
 import { CategoriaService } from './../categoria/categoria.service';
@@ -33,7 +34,8 @@ registerLocaleData(localePt);
       ToastModule,
       ConfirmDialogModule,
       MenuModule,
-      ContextMenuModule
+      ContextMenuModule,
+      PanelMenuModule
     ],
   declarations:
     [
@@ -63,3 +65,4 @@ registerLocaleData(localePt);
     ]
 })
 export class CoreModule { }
+

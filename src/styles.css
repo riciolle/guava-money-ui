@@ -11,7 +11,7 @@ label{
 }
 
 .container {
-  display: flex; /* or inline-flex */
+  display: flex;
 }
 /*
 @media (min-width:1200px){
