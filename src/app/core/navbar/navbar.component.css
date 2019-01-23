@@ -7,10 +7,9 @@
 }
 
 .navbar-menu {
-  position: fixed;
   top: 0;
   bottom: 0;
-  right: 0;
+  right: 1;
   width: 210px;
   margin: 0;
   padding: 0;
@@ -21,11 +20,12 @@
 
 .navbar-usuario {
   padding: 15px;
-  margin-bottom: 15px;
-  border-bottom: 1px solid #525151;
+  border-bottom: 1px solid #ffffff;
   text-transform: uppercase;
   font-weight: bold;
-  color: #fff;
+  color:#ffffff;
+  background-color: #333333;
+  width: 250px;
 }
 
 .navbar-ultimo-login {

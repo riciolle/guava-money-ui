@@ -31,77 +31,48 @@ export class NavbarComponent implements OnInit {
         label: 'Cadastro',
         icon: 'pi pi-pw pi-file',
         items: [{
-          label: 'Lancamentos',
+          label: 'Lançamentos',
           icon: 'pi pi-fw pi-plus',
           items: [
-            { label: 'Lancamento', icon: 'pi pi-fw pi-external-link', routerLinkActiveOptions: 'ativo', routerLink: '/lancamento',
-              visible: this.auth.havePermission('ROLE_PESQUISAR_LANCAMENTO') },
-            { label: 'Consulta', icon: 'pi pi-fw pi-filter' }
+            {
+              label: 'Cadastrar', icon: 'pi pi-fw pi-external-link', routerLink: '/lancamento/novo',
+              visible: this.auth.havePermission('ROLE_CADASTRAR_LANCAMENTO'), routerLinkActiveOptions: { 'ativo': true }
+            },
+            {
+              label: 'Consulta', icon: 'pi pi-fw pi-filter', routerLink: '/lancamento',
+              visible: this.auth.havePermission('ROLE_PESQUISAR_LANCAMENTO'), routerLinkActiveOptions: { 'ativo': true }
+            }
           ]
         },
         {
-          label: 'Open', icon: 'pi pi-fw pi-external-link', routerLinkActiveOptions: 'ativo', routerLink: '/lancamento',
-          visible: this.auth.havePermission('ROLE_PESQUISAR_LANCAMENTO')
-        },
-        { separator: true },
-        { label: 'Quit', icon: 'pi pi-fw pi-times' }
-        ]
+          label: 'Pessoas',
+          icon: 'pi pi-fw pi-plus',
+          items: [
+            {
+              label: 'Cadastrar', icon: 'pi pi-fw pi-external-link', routerLinkActiveOptions: 'ativo', routerLink: '/pessoa/novo',
+              visible: this.auth.havePermission('ROLE_CADASTRAR_PESSOA')
+            },
+            {
+              label: 'Consulta', icon: 'pi pi-fw pi-filter', routerLinkActiveOptions: 'ativo', routerLink: '/pessoa',
+              visible: this.auth.havePermission('ROLE_PESQUISAR_PESSOA')
+            }
+          ]
+        }]
       },
       {
-        label: 'Edit',
+        label: 'Relatórios',
         icon: 'pi pi-fw pi-pencil',
         items: [
-          { label: 'Delete', icon: 'pi pi-fw pi-trash' },
-          { label: 'Refresh', icon: 'pi pi-fw pi-refresh' }
+          { label: 'Lançamentos', icon: 'pi pi-fw pi-file' },
+          { label: 'Pessoas', icon: 'pi pi-fw pi-file' }
         ]
       },
       {
-        label: 'Help',
-        icon: 'pi pi-fw pi-question',
-        items: [
-          {
-            label: 'Contents',
-            icon: 'pi pi-pi pi-bars'
-          },
-          {
-            label: 'Search',
-            icon: 'pi pi-pi pi-search',
-            items: [
-              {
-                label: 'Text',
-                items: [
-                  {
-                    label: 'Workspace'
-                  }
-                ]
-              },
-              {
-                label: 'User',
-                icon: 'pi pi-fw pi-file',
-              }
-            ]
-          }
-        ]
-      },
-      {
-        label: 'Actions',
+        label: 'Ações',
         icon: 'pi pi-fw pi-cog',
         items: [
-          {
-            label: 'Edit',
-            icon: 'pi pi-fw pi-pencil',
-            items: [
-              { label: 'Save', icon: 'pi pi-fw pi-save' },
-              { label: 'Update', icon: 'pi pi-fw pi-save' },
-            ]
-          },
-          {
-            label: 'Other',
-            icon: 'pi pi-fw pi-tags',
-            items: [
-              { label: 'Delete', icon: 'pi pi-fw pi-minus' }
-            ]
-          }
+          { separator: true },
+          { label: 'Logout', icon: 'pi pi-fw pi-times', command: ((click) => this.logout()) }
         ]
       }
     ];

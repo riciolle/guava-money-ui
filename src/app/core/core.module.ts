@@ -21,6 +21,8 @@ import { AuthService } from './../seguranca/auth.service';
 import { GuavaMoneyHttp } from '../seguranca/guava-money-http';
 import { NaoAutorizadoComponent } from './../nao-autorizado/nao-autorizado.component';
 import { PaginaNaoEncontradaComponent } from './../pagina-nao-encontrada/pagina-nao-encontrada.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 registerLocaleData(localePt);
 
@@ -41,11 +43,15 @@ registerLocaleData(localePt);
     [
       NavbarComponent,
       PaginaNaoEncontradaComponent,
-      NaoAutorizadoComponent
+      NaoAutorizadoComponent,
+      HeaderComponent,
+      FooterComponent
     ],
   exports:
     [
       NavbarComponent,
+      HeaderComponent,
+      FooterComponent,
       ToastModule,
       ConfirmDialogModule
     ],
