@@ -36,11 +36,11 @@ export class NavbarComponent implements OnInit {
           items: [
             {
               label: 'Cadastrar', icon: 'pi pi-fw pi-external-link', routerLink: '/lancamento/novo',
-              visible: this.auth.havePermission('ROLE_CADASTRAR_LANCAMENTO'), routerLinkActiveOptions: { 'ativo': true }
+              visible: this.auth.havePermission('ROLE_CADASTRAR_LANCAMENTO'), routerLinkActiveOptions: 'ativo'
             },
             {
               label: 'Consulta', icon: 'pi pi-fw pi-filter', routerLink: '/lancamento',
-              visible: this.auth.havePermission('ROLE_PESQUISAR_LANCAMENTO'), routerLinkActiveOptions: { 'ativo': true }
+              visible: this.auth.havePermission('ROLE_PESQUISAR_LANCAMENTO'), routerLinkActiveOptions: 'ativo'
             }
           ]
         },

@@ -12,15 +12,21 @@ label{
 
 .container {
   display: flex;
+  flex-wrap: wrap;
 }
-/*
-@media (min-width:1200px){
+
+.header, .footer {
+  flex: 0 0 auto;
+  background: black;
+}
+
+/*@media (min-width:1200px){
   .container{
     width: 1170px;
     margin: 0 auto;
   }
-}
-*/
+}*/
+
 .col-valor{
   width: 120px;
   text-align: right;
@@ -58,4 +64,17 @@ label{
 
 .text-center {
   text-align: center;
+}
+
+/* Flex */
+.flex {
+	display: flex;
+}
+
+.flex-wrap {
+	flex-wrap: wrap;
+}
+
+.flex-item-1 {
+	flex: 1;
 }
