@@ -19,6 +19,7 @@ import { LancamentoService } from './../lancamento/lancamento.service';
 import { ErrorHandlerService } from './error-handler.service';
 import { AuthService } from './../seguranca/auth.service';
 import { GuavaMoneyHttp } from '../seguranca/guava-money-http';
+import { DashboardService } from './../dashboard/dashboard.service';
 import { NaoAutorizadoComponent } from './../nao-autorizado/nao-autorizado.component';
 import { PaginaNaoEncontradaComponent } from './../pagina-nao-encontrada/pagina-nao-encontrada.component';
 import { HeaderComponent } from './header/header.component';
@@ -62,6 +63,7 @@ registerLocaleData(localePt);
       CategoriaService,
       ErrorHandlerService,
       AuthService,
+      DashboardService,
       GuavaMoneyHttp,
 
       ConfirmationService,

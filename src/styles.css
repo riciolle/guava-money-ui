@@ -13,12 +13,13 @@ label{
   font-weight: bold;
 }
 
-/*@media (min-width:1200px){
-  .container{
-    width: 1170px;
-    margin: 0 auto;
-  }
-}*/
+/*=====================================================*/
+/* PRIME NG CSS */
+.p-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+/*=====================================================*/
 
 .col-valor{
   width: 120px;
@@ -59,15 +60,9 @@ label{
   text-align: center;
 }
 
-/* Flex */
-.flex {
-	display: flex;
-}
-
-.flex-wrap {
-	flex-wrap: wrap;
-}
-
-.flex-item-1 {
-	flex: 1;
-}
+/*@media (min-width:1200px){
+  .container{
+    width: 1170px;
+    margin: 0 auto;
+  }
+}*/
