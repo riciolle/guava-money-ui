@@ -63,8 +63,14 @@ export class NavbarComponent implements OnInit {
         label: 'Relatórios',
         icon: 'pi pi-fw pi-pencil',
         items: [
-          { label: 'Lançamentos', icon: 'pi pi-fw pi-file' },
-          { label: 'Pessoas', icon: 'pi pi-fw pi-file' }
+          {
+            label: 'Lançamentos', icon: 'pi pi-fw pi-file', routerLinkActiveOptions: 'ativo', routerLink: '/relatorio/lancamento',
+            visible: this.auth.havePermission('ROLE_PESQUISAR_LANCAMENTO')
+          },
+          {
+            label: 'Pessoa', icon: 'pi pi-fw pi-file', routerLinkActiveOptions: 'ativo', routerLink: '/relatorio/pessoa',
+            visible: this.auth.havePermission('ROLE_PESQUISAR_PESSOA')
+          }
         ]
       },
       {

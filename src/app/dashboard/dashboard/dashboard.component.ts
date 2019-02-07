@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { DashboardService } from './../dashboard.service';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,9 +12,23 @@ export class DashboardComponent implements OnInit {
 
   pieChartData: any;
   lineChartData: any;
+  options = {
+    tooltips: {
+      callbacks: {
+        label: ( tooltipItem, data) => {
+          const dataset = data.datasets[tooltipItem.datasetIndex];
+          const valor = dataset.data[tooltipItem.index];
+          const label = dataset.label ? (dataset.label + ': ') : '';
+
+          return label + this.decimalPipe.transform(valor, '1.2-2');
+        }
+      }
+    }
+  };
 
   constructor(
-    private dashboardService: DashboardService
+    private dashboardService: DashboardService,
+    private decimalPipe: DecimalPipe
   ) { }
 
   ngOnInit() {
@@ -36,9 +51,8 @@ export class DashboardComponent implements OnInit {
   }
 
   private configurarGraficoLinha() {
-    this.dashboardService.lancamnetosPorDia().then(dados => {
+    this.dashboardService.lancamentosPorDia().then(dados => {
       const diasDoMes = this.configurarDiaMes();
-      console.log(dados.filter(dado => dado.tipo === 'RECEITA'));
       const totalReceita = this.totalPorCadaDiaMes(dados.filter(dado => dado.tipo === 'RECEITA'), diasDoMes);
       const totalDespesa = this.totalPorCadaDiaMes(dados.filter(dado => dado.tipo === 'DESPESA'), diasDoMes);
       this.lineChartData = {

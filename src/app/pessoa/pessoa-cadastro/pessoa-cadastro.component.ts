@@ -53,7 +53,6 @@ export class PessoaCadastroComponent implements OnInit {
   }
 
   adicionarPessoa(form: FormControl) {
-    console.log(form);
     this.pessoaService.salvar(this.pessoa).then(() => {
       this.messageService.add({ severity: 'success', summary: 'Mensageiro Guava', detail: 'Pessoa salva com sucesso !' });
       form.reset();

@@ -10,10 +10,9 @@
       </div>
       <div class="p-col-12">
         <label style="display:block">Vencimento</label>
-        <p-calendar name="vencimentoInicio" [(ngModel)]="filtro.dataVencimentoInicio" dateFormat="dd/mm/yy"
-          [inputStyle]="{ width: '95px' }"></p-calendar>
+        <p-calendar name="vencimentoInicio" [(ngModel)]="filtro.dataVencimentoInicio" dateFormat="dd/mm/yy"></p-calendar>
         <label style="margin: 0px 10px 0px 10px;">até</label>
-        <p-calendar name="vencimentoFim" [(ngModel)]="filtro.dataVencimentoFim" dateFormat="dd/mm/yy" [inputStyle]="{ width:'95px'}"></p-calendar>
+        <p-calendar name="vencimentoFim" [(ngModel)]="filtro.dataVencimentoFim" dateFormat="dd/mm/yy"></p-calendar>
       </div>
       <div class="p-col-12">
         <p-button label="Pesquisar" type="submit"></p-button>

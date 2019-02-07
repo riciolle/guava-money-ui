@@ -22,7 +22,7 @@ export class DashboardService {
       .then(response => response);
   }
 
-  lancamnetosPorDia(): Promise<Array<any>> {
+  lancamentosPorDia(): Promise<Array<any>> {
     return this.http.get<any>(`${this.lancamentosURL}/estatisticas/por-dia`)
       .toPromise()
       .then(response => {
