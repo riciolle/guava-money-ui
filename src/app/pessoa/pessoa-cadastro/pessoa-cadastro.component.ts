@@ -2,10 +2,11 @@ import { FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { Pessoa } from 'src/app/core/model';
-import { PessoaService } from '../pessoa.service';
-import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { MessageService } from 'primeng/api';
+
+import { ErrorHandlerService } from 'src/app/core/error-handler.service';
+import { Pessoa, Contato } from 'src/app/core/model';
+import { PessoaService } from '../pessoa.service';
 
 @Component({
   selector: 'app-pessoa-cadastro',

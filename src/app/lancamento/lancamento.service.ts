@@ -27,7 +27,11 @@ export class LancamentoService {
 
   constructor(private http: GuavaMoneyHttp) {
     this.lancamentoURL = `${environment.apiUrl}/lancamentos`;
-   }
+  }
+
+  urlUploadAnexo(): string {
+    return `${this.lancamentoURL}/anexo`;
+  }
 
   consultar(filtro: LancamentoFiltro): Promise<any> {
 
@@ -77,6 +81,7 @@ export class LancamentoService {
   }
 
   atualizar(lancamento: Lancamento): Promise<Lancamento> {
+    console.log(lancamento.anexo);
     return this.http.put<Lancamento>(`${this.lancamentoURL}/${lancamento.codigo}`, JSON.stringify(lancamento), { headers: headers })
       .toPromise()
       .then(response => {
@@ -107,6 +112,10 @@ export class LancamentoService {
         lancamento.dataPagamento = moment(lancamento.dataPagamento, 'YYYY-MM-DD').toDate();
       }
     }
+  }
+
+  uploadFile() {
+    return this.http.post(`${this.urlUploadAnexo}`, null, { headers: headers }).toPromise();
   }
 
 }

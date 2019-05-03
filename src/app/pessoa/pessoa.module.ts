@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppRoutingModule } from '../app-routing.module';
 
 import { PessoaPesquisaComponent } from './pessoa-pesquisa/pessoa-pesquisa.component';
 import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
 import { PessoaRoutingModule } from './pessoa-routing.module';
 import { SharedModule } from './../shared/shared.module';
 
+import { PanelModule } from 'primeng/panel';
 import { InputMaskModule } from 'primeng/inputmask';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { EditorModule } from 'primeng/editor';
@@ -16,6 +16,8 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { AccordionModule } from 'primeng/accordion';
+import { DialogModule } from 'primeng/dialog';
+import { PessoaCadastroContatoComponent } from './pessoa-cadastro-contato/pessoa-cadastro-contato.component';
 
 @NgModule({
   imports: [
@@ -33,11 +35,14 @@ import { AccordionModule } from 'primeng/accordion';
     TooltipModule,
     EditorModule,
     CurrencyMaskModule,
-    InputMaskModule
+    InputMaskModule,
+    PanelModule,
+    DialogModule
   ],
   declarations: [
     PessoaPesquisaComponent,
-    PessoaCadastroComponent
+    PessoaCadastroComponent,
+    PessoaCadastroContatoComponent
   ],
   exports: []
 })

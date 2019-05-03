@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
 import { LancamentoPesquisaComponent } from './lancamento-pesquisa/lancamento-pesquisa.component';
 
+import { PanelModule } from 'primeng/panel';
 import { InputMaskModule } from 'primeng/inputmask';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { DropdownModule } from 'primeng/dropdown';
@@ -19,6 +20,8 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { AccordionModule } from 'primeng/accordion';
+import { FileUploadModule } from 'primeng/fileupload';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @NgModule({
   imports: [
@@ -40,7 +43,10 @@ import { AccordionModule } from 'primeng/accordion';
     SelectButtonModule,
     DropdownModule,
     CurrencyMaskModule,
-    InputMaskModule
+    InputMaskModule,
+    PanelModule,
+    FileUploadModule,
+    ProgressSpinnerModule
   ],
   declarations: [
     LancamentoPesquisaComponent,

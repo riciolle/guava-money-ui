@@ -1,3 +1,4 @@
+import { FileUploadModule } from 'primeng/fileupload';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -25,6 +26,9 @@ export class LancamentoCadastroComponent implements OnInit {
   categorias = [];
   pessoas = [];
   formulario: FormGroup;
+  uploadedFiles: any[] = [];
+  private base64textString: String = '';
+  uploadEmAndamento = false;
 
   constructor(
     private categoriaService: CategoriaService,
@@ -64,7 +68,9 @@ export class LancamentoCadastroComponent implements OnInit {
         codigo: [null, Validators.required],
         nome: []
       }),
-      observacao: []
+      observacao: [],
+      anexo: [],
+      urlAnexo: []
     });
   }
 
@@ -132,4 +138,36 @@ export class LancamentoCadastroComponent implements OnInit {
       })
       .catch(erro => this.errorHandlerService.handle(erro));
   }
+
+  antesUploadAnexo(event) {
+    event.xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('token'));
+    this.uploadEmAndamento = true;
+  }
+
+  aoTerminarUploadAnexo(event) {
+    const anexo = JSON.parse(event.xhr.response);
+
+    this.formulario.patchValue({
+      anexo: anexo.nome,
+      urlAnexo: anexo.url
+    });
+
+    this.uploadEmAndamento = false;
+  }
+
+  erroUpload(event) {
+    this.messageService.add({ severity: 'error', summary: 'File Uploaded', detail: 'Erro ao tentar enviar anexo!' });
+    this.uploadEmAndamento = false;
+  }
+
+  get nomeAnexo() {
+    const nome = this.formulario.get('anexo').value;
+
+    if (nome) {
+      return nome.substring(nome.indexOf('_') + 1, nome.length);
+    }
+
+    return '';
+  }
+
 }
